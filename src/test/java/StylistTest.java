@@ -9,7 +9,7 @@ public class StylistTest {
   @Before
   public void setUp() {
     DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon_test", null, null);
-    stylist = new Stylist("Mahesh Ankur", "Mahesh produces a great fade and high and tight hair styles");
+    stylist = new Stylist("Mahesh Ankur", "Mahesh produces great fade and high and tight hair styles");
   }
 
   @Test
@@ -22,4 +22,27 @@ public class StylistTest {
     assertTrue(stylist.getId()) > 0);
   }
 
-  
+  @Test
+  public void Stylist_getName_string() {
+    assertEquals("Mahesh Ankur", stylist.getName());
+  }
+
+  @Test
+  public void Stylist_getDetail_string() {
+    assertEquals("Mahesh produces great fade and high and tight hair styles", stylist.getDetail());
+  }
+
+  @Test
+  public void Stylist_all_ArrayList() {
+    assertTrue(stylist.all().size() > 0);
+  }
+
+  @After
+  public void tearDown() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM stylists *;";
+      con.createQuery(sql).executeUpdate();
+    }
+  }
+
+}
