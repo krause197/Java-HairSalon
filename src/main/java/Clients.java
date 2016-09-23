@@ -40,6 +40,18 @@ public class Clients {
     return stylistId;
   }
 
+  public static void update(int id, String name, String note, int stylistId) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET name = :name, note = :note, stylistId = :stylistId, WHERE id = :id;";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .addParameter("name", name)
+        .addParameter("note", note)
+        .addParameter("stylistId", stylistId)
+        .executeUpdate();
+    }
+  }
+
   public static List<Clients> all() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM clients ORDER by name;";
@@ -56,4 +68,14 @@ public class Clients {
         .executeAndFetch(Clients.class);
     }
   }
-}
+
+  public static void delete(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM clients WHERE id = :id;";
+      con.createQuery(sql)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+  
+ }
