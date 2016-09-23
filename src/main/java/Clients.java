@@ -16,11 +16,11 @@ public class Clients {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO clients (name, note, stylistId) VALUES (:name, :note, :stylistId);";
       this.id = (int) con.createQuery(sql, true)
-      .addParameter("name", this.name)
-      .addParameter("note", this.note)
-      .addParameter("stylistId", this.stylistId)
-      .executeUpdate()
-      .getKey();
+        .addParameter("name", this.name)
+        .addParameter("note", this.note)
+        .addParameter("stylistId", this.stylistId)
+        .executeUpdate()
+        .getKey();
     }
   }
 
@@ -39,5 +39,21 @@ public class Clients {
   public String getStylistId() {
     return stylistId;
   }
-  
+
+  public static List<Clients> all() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients ORDER by name;";
+      return con.createQuery(sql)
+        .executeAndFetch(Clients.class);
+    }
+  }
+
+  public static List<Clients> allForStylist(int stylistId) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients WHERE stylistId = :id ORDER by name;";
+      return con.createQuery(sql)
+        .addParameter("id", stylistId)
+        .executeAndFetch(Clients.class);
+    }
+  }
 }
