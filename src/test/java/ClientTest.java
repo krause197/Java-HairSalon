@@ -40,3 +40,18 @@ public class ClientTest {
   public void Client_getStylistId_int() {
     assertEquals(1, clientA.getStylistId());
   }
+
+  @Test
+  public void Client_all_ArrayList() {
+    assertTrue(Clients.allForStylist(1).size() >0);
+  }
+
+  @Test
+  public void tearDown() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM clients *;";
+      con.createQuery(sql).executeUpdate();
+    }
+  }
+
+}
