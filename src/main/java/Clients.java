@@ -31,3 +31,13 @@ public class Clients {
   public String getName() {
     return name;
   }
+
+  public String getNote() {
+    return note;
+  }
+
+  public String getStylistId() {
+    return stylistId;
+  }
+  
+}
