@@ -17,32 +17,32 @@ public class ClientTest {
   }
 
   @Test
-  public void Client_instantiates_true() {
+  public void Clients_instantiates_true() {
     assertTrue(clientA instanceof Clients);
   }
 
   @Test
-  public void Client_getId_true() {
+  public void Clients_getId_true() {
     assertTrue(clientA.getId() > 0);
   }
 
   @Test
-  public void Client_getName_string() {
+  public void Clients_getName_string() {
     assertEquals("SGT Smith", clientA.getName());
   }
 
   @Test
-  public void Client_getNote_string() {
+  public void Clients_getNote_string() {
     assertEquals("SGT Smith comes every 1st and 3rd Friday, High and Tight with a zero up the sides and fingerlength on top", clientA.getNote());
   }
 
   @Test
-  public void Client_getStylistId_int() {
+  public void Clients_getStylistId_int() {
     assertEquals(1, clientA.getStylistId());
   }
 
   @Test
-  public void Client_all_ArrayList() {
+  public void Clients_all_ArrayList() {
     assertTrue(Clients.allForStylist(1).size() >0);
   }
 

@@ -3,13 +3,13 @@ import org.sql2o.*;
 import java.util.ArrayList;
 
 
-public class Stylist {
+public class Stylists {
   private int id;
   private String name;
   private String detail;
 
 
-  public Stylist(String name, String detail, int stylistId) {
+  public Stylists(String name, String detail, int stylistId) {
     this.name = name;
     this.detail = detail;
 
@@ -35,11 +35,11 @@ public class Stylist {
     return detail;
   }
 
-  public static List<Stylist> all() {
+  public static List<Stylists> all() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM stylists ORDER by name;";
       return con.createQuery(sql)
-      .executeAndFetch(Stylist.class);
+      .executeAndFetch(Stylists.class);
     }
   }
 
