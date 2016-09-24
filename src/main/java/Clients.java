@@ -69,6 +69,15 @@ public class Clients {
     }
   }
 
+  public static Clients find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients WHERE id = :id";
+      return con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetchFirst(Clients.class);
+    }
+  }
+
   public static void delete(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "DELETE FROM clients WHERE id = :id;";

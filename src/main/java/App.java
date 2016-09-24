@@ -88,8 +88,8 @@ public class App {
     post("/stylists/:stylistId/clients/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("name");
-      String notes = request.queryParams("note");
-      int stylistid = Integer.parseInt(request.params(":stylistId"));
+      String note = request.queryParams("note");
+      int stylistId = Integer.parseInt(request.params(":stylistId"));
       Clients client = new Clients(name, note, stylistId);
       response.redirect("/stylists/" + stylistId);
       return new ModelAndView(model, layout);

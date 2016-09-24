@@ -1,0 +1,17 @@
+<h1 class="title">BARBERS</h1>
+  <h3><a href="/stylists/new"><button class="btn btn-success" type="button">Add new stylist</button></a></h3>
+
+
+#foreach ($stylist in $stylists)
+  <h4><a href="/stylists/$stylist.getId()"><h4>$stylist.getName()</h4></a>
+  <ul>
+    <li>DETAILS ON BARBER: <em>$stylist.getDetail()</em></li>
+    <li>CLIENTS OF BARBER:
+      #foreach($client in $clients)
+        #if($client.getStylistId() == $stylist.getId())
+          <em> $client.getName(),</em>
+        #end
+      #end
+    </li>
+  </ul>
+#end

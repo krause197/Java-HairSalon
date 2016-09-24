@@ -1,1 +1,12 @@
 <h1>WELCOME TO AAFES BARBER SHOP AT CAMP ARIFJAN, KUWAIT<h1>
+<h2>HERE ARE OUR BARBERS</h2>
+<h3>CLICK ON A NAME BELOW TO SEE THEIR CLIENTS</h3>
+
+<div class="row">
+#foreach ($stylist in $stylists)
+  <div class="col-sm-4">
+    <h3><a href="/stylists/$stylist.getId()">$stylist.name()</a></h3>
+    <p><em>$stylist.getDetail()</em></p>
+  </div>
+#end
+</div>
