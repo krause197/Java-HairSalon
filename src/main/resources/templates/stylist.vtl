@@ -1,15 +1,14 @@
 <h1>$stylist.getName()</h1>
-<h3><a class="edit" href="/stylists/$stylist.getId()/edit"> EDIT</a></h3>
-<p><em>$stylist.getDetail()</em></p>
 
+<p><em>$stylist.getDetail()</em></p>
+<h3><a class="edit" href="/stylists/$stylist.getId()/edit"> EDIT</a></h3>
 <h3>Clients</h3>
-  <h4><a href="/$stylist.getId()/clients/new"><button class="btn btn-success" type="button">ADD NEW CLIENT FOR THIS BARBER</button></a></h4>
+  <h4><a href="/stylists/$stylist.getId()/clients/new"><button class="btn btn-success" type="button">ADD NEW CLIENT FOR THIS BARBER</button></a></h4>
 
 #foreach ($client in $clients)
-  <h4>$client.getName()
-    <a class="edit" href="/stylists/$stylist.getId()/clients/$client.getId()/edit">EDIT CLIENT INFO</a>
-  </h4>
+  <h4>$client.getName()</h4>
   <ul>
-    <li>NOTES FOR CLIENT: $client.getNotes()</li>
+    <li>NOTES FOR CLIENT: $client.getNote()</li>
   </ul>
+  <a class="edit" href="/stylists/$stylist.getId()/clients/$client.getId()/edit">EDIT CLIENT INFO</a>
 #end

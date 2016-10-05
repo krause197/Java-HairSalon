@@ -10,26 +10,26 @@ public class ClientTest {
 
   @Test
   public void Clients_instantiates_true() {
-    Clients clientAlpha = new Clients("name", "notes", 1);
-    assertTrue(clientAlpha instanceof Clients);
+    Clients clientAlpha = new Clients("Name", "Notes", 1);
+    assertEquals(true, clientAlpha instanceof Clients);
   }
 
   @Test
   public void Clients_getId_true() {
-    Clients clientAlpha = new Clients("name", "notes", 1);
-    assertTrue(clientAlpha.getId() > 0);
+    Clients clientAlpha = new Clients("Name", "Notes", 1);
+    assertEquals(true, clientAlpha.getId() > 0);
   }
 
   @Test
   public void Clients_getName_string() {
-    Clients clientAlpha = new Clients("name", "notes", 1);
-    assertEquals("SGT Smith", clientAlpha.getName());
+    Clients clientAlpha = new Clients("Name", "Notes", 1);
+    assertEquals("Name", clientAlpha.getName());
   }
 
   @Test
   public void Clients_getNote_string() {
-    Clients clientAlpha = new Clients("name", "notes", 1);
-    assertEquals("notes", clientAlpha.getNote());
+    Clients clientAlpha = new Clients("Name", "Notes", 1);
+    assertEquals("Notes", clientAlpha.getNote());
   }
 
   @Test
@@ -40,15 +40,8 @@ public class ClientTest {
 
   @Test
   public void Clients_all_ArrayList() {
-    assertTrue(Clients.allForStylist(1).size() >0);
-  }
-
-  @Test
-  public void tearDown() {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM clients *;";
-      con.createQuery(sql).executeUpdate();
-    }
+    Clients clientAlpha = new Clients("name", "notes", 1);
+    assertEquals(true, Clients.allForStylist(1).size() >0);
   }
 
 }
