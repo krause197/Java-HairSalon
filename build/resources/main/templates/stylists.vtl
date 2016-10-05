@@ -1,9 +1,9 @@
-<h1 class="title">BARBERS</h1>
+<h1>BARBERS</h1>
   <h3><a href="/stylists/new"><button class="btn btn-success" type="button">Add new stylist</button></a></h3>
 
 
 #foreach ($stylist in $stylists)
-  <h4><a href="/stylists/$stylist.getId()"><h4>$stylist.getName()</h4></a>
+  <h4><a href="/stylists/$stylist.getId()">$stylist.getName()</a></h4>
   <ul>
     <li>DETAILS ON BARBER: <em>$stylist.getDetail()</em></li>
     <li>CLIENTS OF BARBER:

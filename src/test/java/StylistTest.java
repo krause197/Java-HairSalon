@@ -19,7 +19,7 @@ public class StylistTest {
 
   @Test
   public void Stylists_getId_true() {
-    assertTrue(stylist.getId()) > 0);
+    assertTrue(stylist.getId() > 0);
   }
 
   @Test

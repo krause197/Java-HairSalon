@@ -4,41 +4,38 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 public class ClientTest {
-  private Clients clientA;
-  private Clients clientB;
-  private Stylist stylist;
 
-  @Before
-  public void setUp() {
-    DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon_test", null, null);
-    stylist = new Stylist("Mahesh Ankur", "Mahesh produces a great fade and high and tight hair styles");
-    clientA = new Clients("SGT Smith", "SGT Smith comes every 1st and 3rd Friday, High and Tight with a zero up the sides and fingerlength on top", 1);
-    clientB = new Clients("1LT Clark", "1LT Clark comes every 2nd and 4th Tuesday, Fade with a zero up the sides and a three on top", 1);
-  }
+  @Rule
+  public DatabaseRule database = new DatabaseRule();
 
   @Test
   public void Clients_instantiates_true() {
-    assertTrue(clientA instanceof Clients);
+    Clients clientAlpha = new Clients("name", "notes", 1);
+    assertTrue(clientAlpha instanceof Clients);
   }
 
   @Test
   public void Clients_getId_true() {
-    assertTrue(clientA.getId() > 0);
+    Clients clientAlpha = new Clients("name", "notes", 1);
+    assertTrue(clientAlpha.getId() > 0);
   }
 
   @Test
   public void Clients_getName_string() {
-    assertEquals("SGT Smith", clientA.getName());
+    Clients clientAlpha = new Clients("name", "notes", 1);
+    assertEquals("SGT Smith", clientAlpha.getName());
   }
 
   @Test
   public void Clients_getNote_string() {
-    assertEquals("SGT Smith comes every 1st and 3rd Friday, High and Tight with a zero up the sides and fingerlength on top", clientA.getNote());
+    Clients clientAlpha = new Clients("name", "notes", 1);
+    assertEquals("notes", clientAlpha.getNote());
   }
 
   @Test
   public void Clients_getStylistId_int() {
-    assertEquals(1, clientA.getStylistId());
+    Clients clientAlpha = new Clients("name", "notes", 1);
+    assertEquals(1, clientAlpha.getStylistId());
   }
 
   @Test

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
-import org.sql2o.*;
 
 
 public class App {
