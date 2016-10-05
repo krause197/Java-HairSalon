@@ -1,14 +1,14 @@
 <h1>EDIT CLIENT INFORMATION: $client.getName()</h1>
 
 <form action="/$stylist.getId()/clients/$client.getId()/edit" method="post">
-  <input type="hidden" name="stylistId" value="$stylist.getId()">
+  <input type="hidden" name="stylist_id" value="$stylist.getId()">
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" name="name" class="form-control" value="$client.getName()" required>
+    <input type="text" name="name" class="form-control" value="$client.getName()">
   </div>
   <div class="form-group">
     <label for="note">NOTES</label>
-    <input type="text" name="note" class="form-control" value="$client.getNote()" required>
+    <input type="text" name="note" class="form-control" value="$client.getNote()">
   </div>
   <button class="btn btn-primary" type="submit" name="update">SUBMIT</button>
   <a href="/$client.getId()/delete"><button class="btn btn-danger" type="button" name="delete">Delete</button></a>

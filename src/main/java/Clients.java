@@ -6,19 +6,19 @@ public class Clients {
   private int id;
   private String name;
   private String note;
-  private int stylistId;
+  private int stylist_id;
 
-  public Clients(String name, String note, int stylistId) {
+  public Clients(String name, String note, int stylist_id) {
     this.name = name;
     this.note = note;
-    this.stylistId = stylistId;
+    this.stylist_id = stylist_id;
 
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO clients (name, note, stylist_id) VALUES (:name, :note, :stylistId);";
+      String sql = "INSERT INTO clients (name, note, stylist_id) VALUES (:name, :note, :stylist_id);";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
         .addParameter("note", this.note)
-        .addParameter("stylist_id", this.stylistId)
+        .addParameter("stylist_id", this.stylist_id)
         .executeUpdate()
         .getKey();
     }
@@ -37,17 +37,17 @@ public class Clients {
   }
 
   public int getStylistId() {
-    return stylistId;
+    return stylist_id;
   }
 
-  public static void update(int id, String name, String note, int stylistId) {
+  public static void update(int id, String name, String note, int stylist_id) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE clients SET name = :name, note = :note, stylist_id = :stylistId, WHERE id = :id;";
+      String sql = "UPDATE clients SET name = :name, note = :note, stylist_id = :stylist_id, WHERE id = :id;";
       con.createQuery(sql)
         .addParameter("id", id)
         .addParameter("name", name)
         .addParameter("note", note)
-        .addParameter("stylist_id", stylistId)
+        .addParameter("stylist_id", stylist_id)
         .executeUpdate();
     }
   }
@@ -60,11 +60,11 @@ public class Clients {
     }
   }
 
-  public static List<Clients> allForStylist(int stylistId) {
+  public static List<Clients> allForStylist(int stylist_id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM clients WHERE stylist_id = :id ORDER by name;";
       return con.createQuery(sql)
-        .addParameter("id", stylistId)
+        .addParameter("id", stylist_id)
         .executeAndFetch(Clients.class);
     }
   }
