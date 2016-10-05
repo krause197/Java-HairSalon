@@ -35,7 +35,7 @@ Eric Krause
 
 ## Known Bugs
 
-Application has issues with the links on the homepage directing to the correct pages (href in html of vtl files)
+No known bugs at this time
 
 ## Support and contact details
 
